@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  https://github.com/spring-projects/spring-boot/tree/master/spring-boot/src/main/resources/org/springframework/boot/logging/logback -->
+<configuration>
+	<!-- <include resource="org/springframework/boot/logging/logback/base.xml" /> -->
+	<!-- Este filtro se aplica a todos los perfiles -->
+	<!-- <logger name="org.springframework" level="INFO"/> -->
+	
+	
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+	    <encoder>
+	        <pattern>
+           <!-- %d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) [%-40.40logger{10}] - %msg%n --> 
+	            %highlight([%-5level]) [%d{ISO8601}] %cyan([%logger{36}]) - %msg%n
+	        </pattern>
+	    </encoder>
+	</appender>	
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</configuration>
