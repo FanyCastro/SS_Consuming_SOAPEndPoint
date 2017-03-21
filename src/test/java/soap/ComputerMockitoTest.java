@@ -102,14 +102,19 @@ public class ComputerMockitoTest {
      * @throws DateTimeParseException to manage the error
      * @throws DatatypeConfigurationException to manage the error
      */
-    @Test(expected = DateTimeParseException.class)
-    public void testDailyDilbertErrorDate () throws DateTimeParseException, DatatypeConfigurationException {
+    @Test(expected = DatatypeConfigurationException.class)
+    public void testDailyDilbertErrorDate () throws DatatypeConfigurationException {
     	
-    	String dateValue = "2017-34-19";
+    	String dateValue = "2017-04-19";
     	try {	
+        	GregorianCalendar c = GregorianCalendar.from((LocalDate.parse(dateValue)).atStartOfDay(ZoneId.systemDefault()));
+    		XMLGregorianCalendar xmlDate = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
+    		when (computerClient.getDailyDilbert(xmlDate)).thenThrow(DatatypeConfigurationException.class); 
+    		
     		computerService.callDailyDilbert(dateValue);
+    		//fail("Should throw an exception when the date is incorrect.");
     	}
-    	catch (DateTimeParseException e) {
+    	catch (DatatypeConfigurationException e) {
     		log.info("TEST dailyDilbert date error {}: ", dateValue);
     		verify(computerClient, times(0)).getDailyDilbert(null);
     		throw e;
