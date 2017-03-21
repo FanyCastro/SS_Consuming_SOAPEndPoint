@@ -1,0 +1,8 @@
+logging:
+  level:
+    soap: DEBUG
+    org:
+      springframework:
+        ws: DEBUG
+
+        
