@@ -10,9 +10,9 @@ Build System: Maven | Gradle
 
 #### Application componentes: src/main/java
 * Application.java (main class to run the application)
-* ComputerClient.java ()
+* ComputerClient.java (create a web service client extending the WebServiceGatewaySupport class and code the operations)
 * ComputerService.java (class to perform service tasks)
-* ComputerConfiguration.java ()
+* ComputerConfiguration.java (configuring web service components)
 
 #### Application componentes: src/main/resources
 * application.yml (properties) 
